@@ -8,25 +8,25 @@ module.exports.validateRegisterInput = (
 ) => {
     const errors = {};
     if (firstName.trim() === "") {
-        errors.firstName = "Введіть ім'я";
+        errors.firstName = "Enter your name";
     }
     if (lastName.trim() === "") {
-        errors.lastName = "Введіть фамілію";
+        errors.lastName = "Enter your surname";
     }
 
     if (email.trim() === "") {
-        errors.email = "Введіть email";
+        errors.email = "Enter email";
     } else {
         const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
         if (!email.match(regEx)) {
-            errors.email = "Email має невірний формат";
+            errors.email = "Email is not valid";
         }
     }
 
     if (password === "") {
-        errors.password = "Введіть пароль";
+        errors.password = "Enter the password";
     } else if (password !== confirmPassword) {
-        errors.confirmPassword = "Паролі не співпадають";
+        errors.confirmPassword = "Passwords are not match";
     }
 
     return {
@@ -38,11 +38,11 @@ module.exports.validateRegisterInput = (
 module.exports.validateLoginInput = (email, password) => {
     const errors = {};
     if (email.trim() === "") {
-        errors.email = "Введіть email";
+        errors.email = "Ener email";
     }
 
     if (password === "") {
-        errors.password = "Введіть пароль";
+        errors.password = "Enter password";
     }
 
     return {
@@ -54,15 +54,15 @@ module.exports.validateLoginInput = (email, password) => {
 module.exports.validateChapterContent = (user, text, type) => {
     const errors = {};
     if (user.role !== "admin" && user.role !== "teacher") {
-        errors.role = "Не дозволено";
+        errors.role = "Not allowed";
     }
 
     if (text.trim() === "") {
-        errors.text = "Введіть текст";
+        errors.text = "Enter text";
     }
 
     if (type !== "test" && type !== "lecture" && type !== "control") {
-        errors.type = "Оберіть тип";
+        errors.type = "Choose type";
     }
 
 
@@ -76,15 +76,15 @@ module.exports.validateChapterContent = (user, text, type) => {
 
 module.exports.validateCourse = (courseName, description) =>{
     const errors = {};
-    if(courseName.trim() === '') errors.courseName = 'Введіть назву курсу';
+    if(courseName.trim() === '') errors.courseName = 'Enter course name';
 
     if(courseName.length > 100){
-        errors.courseName = 'Назва курсу не може бути більше ніж 100 символів'
+        errors.courseName = 'Course name cannot be larger than 100 symbols.'
     }
-    if(description.trim() === '') errors.description = 'Введіть опис';
+    if(description.trim() === '') errors.description = 'Enter description';
 
     if(description.length > 300){
-        errors.description = 'Опис не може бути більше ніж 300 символів'
+        errors.description = 'Description cannot be larger than 300 symbols.'
     }
 
     return {
@@ -96,15 +96,15 @@ module.exports.validateCourse = (courseName, description) =>{
 module.exports.validateTestInput = (test) => {
     const errors = {};
     if (test.question.trim() === "") {
-        errors.question = "Задайте питання";
+        errors.question = "Enter question";
     }
 
     if (!test.variants.length) {
-        errors.variants = "Не задано жодного питання";
+        errors.variants = "No variants added.";
     }
 
     if (!test.answer.length) {
-        errors.answer = "Оберіть відповідь";
+        errors.answer = "Choose answer";
     }
     //console.log(errors);
     

@@ -44,13 +44,13 @@ module.exports = {
 
             const user = await User.findOne({ email });
             if (!user) {
-                errors.general = "Користувача не знайдено";
+                errors.general = "User is not found";
                 throw new UserInputError("User not found", { errors });
             }
 
             const match = await bcrypt.compare(password, user.password);
             if (!match) {
-                errors.general = "Невірний пароль";
+                errors.general = "Invalid password";
                 throw new UserInputError("Password is incorrect", { errors });
             }
 
@@ -93,7 +93,7 @@ module.exports = {
             if (user) {
                 throw new UserInputError("email", {
                     errors: {
-                        email: "Користувач з такою адресою вже існує",
+                        email: "User with this email already exists",
                     },
                 });
             }

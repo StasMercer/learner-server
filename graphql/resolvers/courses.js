@@ -52,7 +52,7 @@ module.exports = {
                 if (course) {
                     return course;
                 }
-                throw new Error('курс не знайдено');
+                throw new Error('Course is not found');
             }catch (e) {
                 throw new Error(e)
             }
@@ -76,7 +76,7 @@ module.exports = {
                 throw new Error("This role not allowed");
             }
             const findCourse = await Course.findOne({courseName});
-            if (findCourse) throw new UserInputError("CourseName error", {courseName: "Курс з такою назвою вже існує"});
+            if (findCourse) throw new UserInputError("CourseName error", {courseName: "Course with this name already exists"});
 
             const course = new Course({
                 description,

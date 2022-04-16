@@ -7,7 +7,7 @@ const courseSchema = new Schema({
         typeKey: Schema.Types.ObjectId,
         ref: "users",
     },
-    description:{typeKey: String, default: 'Опису нема'},
+    description:{typeKey: String, default: 'No description'},
 
     createdAt: {typeKey: String, default: "2020-04-14T11:43:56.707Z"},
     rates: [{ email: String, rate: Number }],

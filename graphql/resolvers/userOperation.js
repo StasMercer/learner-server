@@ -13,7 +13,7 @@ module.exports = {
             const course = await Course.findById(courseId);
             user.progress.forEach((element) => {
                 if (element.courseId == courseId) {
-                    throw new Error("Ви вже є учасником курсу");
+                    throw new Error("You are already enrolled to this course.");
                 }
             });
             course.members.push(user);
@@ -45,7 +45,7 @@ module.exports = {
                 user.progress.splice(index, 1);
                 await user.save();
             } else {
-                throw new Error("Вас немає в цьому курсі");
+                throw new Error("You are not in this course.");
             }
 
             return user;
@@ -104,7 +104,7 @@ module.exports = {
 
                 return await user.save();
             } else {
-                throw new Error("Ви не берете участь в курсі");
+                throw new Error("You are not enrolled to thi course");
             }
         },
     },
